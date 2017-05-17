@@ -1,0 +1,61 @@
+
+#playableArea {
+  position:absolute;
+  width:80%;
+  height:400px;
+  top:70px;
+  border-width:1px;
+  border-style:solid;
+  overflow:hidden;
+  
+  /*background-image: url(road.png);*/
+  
+  /*z-index:0;*/
+}
+
+.car {
+  width:100px;
+  height:70px;
+  position:absolute;
+
+  background-color: blue;
+  /*
+  background: url(car.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  */
+  
+  /*z-index:5;*/
+}
+
+#car1 {
+  top:100px;
+}
+
+#car2 {
+  top:200px;
+}
+
+#car3 {
+  top:300px;
+}
+
+.bang {
+  background: red !important;
+  /*
+  background-image: url(car.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  */
+}
+
+#player {
+  top:20px;
+  left:37%;
+  position: absolute;
+
+  width:40px;
+  height:40px;
+
+  background:green;
+}
