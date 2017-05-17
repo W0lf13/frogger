@@ -24,6 +24,9 @@ jQuery(document).ready(function () {
         newCar.className = 'car';
 
         document.getElementById('playableArea').appendChild(newCar);
+
+        // change the left position after created (after css rules pulled in)
+        newCar.style.left = 0 - + $('.car').width();
     }
 
     // fires off the mechanism to move all cars
@@ -44,11 +47,11 @@ jQuery(document).ready(function () {
         var moveLeft = 0;
         var ranNum = Math.floor(Math.random() * 4000) + 1500;
 
-        if (parseInt(elem.css("left")) == 0) {
-            moveLeft = $("#playableArea").width() - 100;//// remove -100 when rotation implemented
+        if (parseInt(elem.css("left")) == 0 - elem.width()) {
+            moveLeft = $("#playableArea").width();
         }
         else {
-            moveLeft = 0;
+            moveLeft = 0 - elem.width();
         }
 
         // moves the car left to right, at a randomly generated speed
@@ -64,15 +67,15 @@ jQuery(document).ready(function () {
                 },
                 // once the element has completed its movement cycle, re-call func to move this specific car again
                 complete: function () {
-                    //// WORKS, IMPLEMENT WHEN READY
-                    //// not really working wolfy, get it done
-                    /*elem.css({
-                        'webkitTransform': 'rotate(180deg)',
-                        'msTransform': 'rotate(180deg)',
-                        'oTransform': 'rotate(180deg)',
-                        'transform': 'rotate(180deg)'
-                    });*/
+                    // rotate the div (car) 180 deg
+                    if (elem.css('transform') == 'none') {
+                        elem.css({ 'transform': 'rotate(180deg)' });
+                    }
+                    else {
+                        elem.css({ 'transform': '' });
+                    }
 
+                    // move the div to the other side of the screen
                     moveThisCar(elem);
                 }
             });
@@ -104,10 +107,6 @@ jQuery(document).ready(function () {
     // check for collision between player and any cars
     function testCollision(position1, size1, position2, size2) {
 
-        ////*********************************************************************************/
-        ////PROBLEM IS THAT ALL 3 CARS ARE CHECKING FOR COLLISION AT THE SAME TIME, AND THE ONES THAT ARENT COLLIDED ARE REMOVING THE COLLISION CLASS BEFORE IT CAN REFLECT ON THE PLAYER. THE LAST CAR IS CHECKED LAST, AND ADDING THE CLASS, THAT IS WHY IT APPEARS TO WORK.
-        ////*********************************************************************************/
-
         var car = size2;
 
         if (((position1.left + size1.width()) > position2.left) &&
@@ -115,15 +114,22 @@ jQuery(document).ready(function () {
             ((position2.left + size2.width()) > position1.left) &&
             ((position2.top + size2.height()) > position1.top)) {
 
-
+            //// DETERMIN WHAT THE BEST COURSE OF ACTIONS WILL BE HERE, FOR NOW, REMOVED
             // stop all cars from moving
+            /*
             $('.car').each(function (i) {
                 $(this).stop(true, false);
             });
+            */
 
-            // alert the user
-            alert('bang!');
+            // indicate to the user that they died
+            $('#playableArea').css('background', 'rgba(228, 10, 10, 0.44)');
+            setTimeout(function () {
+                $('#playableArea').css('background', '');
+            }, 700);
+
             $('#player').css('top', '0px');/// resets player for now, for testing
+            ////console.log('grats, you reached level xxx);
 
         }
     }
