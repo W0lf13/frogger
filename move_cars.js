@@ -27,6 +27,7 @@ jQuery(document).ready(function () {
 
         // change the left position after created (after css rules pulled in)
         newCar.style.left = 0 - + $('.car').width();
+        $(newCar).css({ 'transform': 'rotate(180deg)' });
     }
 
     // fires off the mechanism to move all cars
@@ -43,9 +44,14 @@ jQuery(document).ready(function () {
     // move the specific car that is parsed in
     function moveThisCar(elem) {
 
-        // check weather or not the car is on the left of the screen (needs to be moved or not)
+        // determin the random speed based on browser size
         var moveLeft = 0;
-        var ranNum = Math.floor(Math.random() * 4000) + 1500;
+        if ($(playableArea).width() > 1000) {
+            var ranNum = Math.floor(Math.random() * 2000) + 1500;
+        }
+        else {
+            var ranNum = Math.floor(Math.random() * 4000) + 900;
+        }
 
         if (parseInt(elem.css("left")) == 0 - elem.width()) {
             moveLeft = $("#playableArea").width();
