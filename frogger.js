@@ -25,9 +25,14 @@ jQuery(document).ready(function () {
 
         document.getElementById('playableArea').appendChild(newCar);
 
-        // change the left position after created (after css rules pulled in)
-        newCar.style.left = 0 - + $('.car').width();
-        $(newCar).css({ 'transform': 'rotate(180deg)' });
+        // move car to initial position, every second car starts on the right side
+        if ($('.car').length % 2 == 0) {
+            $(newCar).css({ 'left': $('#playableArea').width() + 'px' });
+        }
+        else {
+            $(newCar).css({ 'left': '-' + $('.car').width() + 'px' });
+            $(newCar).css({ 'transform': 'rotate(180deg)' });
+        }
     }
 
     // fires off the mechanism to move all cars
@@ -53,6 +58,7 @@ jQuery(document).ready(function () {
             var ranNum = Math.floor(Math.random() * 4000) + 900;
         }
 
+        // check position of car to determine where to move
         if (parseInt(elem.css("left")) == 0 - elem.width()) {
             moveLeft = $("#playableArea").width();
         }
@@ -129,10 +135,8 @@ jQuery(document).ready(function () {
             */
 
             // indicate to the user that they died
-            $('#playableArea').css('background', 'rgba(228, 10, 10, 0.44)');
-            setTimeout(function () {
-                $('#playableArea').css('background', '');
-            }, 700);
+            $('#playableArea').animate({ backgroundColor: 'red' }, 'fast');
+            $('#playableArea').animate({ backgroundColor: 'white' }, 'medium');
 
             $('#player').css('top', '0px');/// resets player for now, for testing
             ////console.log('grats, you reached level xxx);
