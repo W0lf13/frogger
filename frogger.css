@@ -1,41 +1,41 @@
+html, body {
+  position: absolute;
+
+  height: 100%;
+  width: 100%;
+  margin: 0;
+
+  overflow: hidden;/**/
+}
+
+#wrapper {
+  position: relative;
+
+  height: 99%;
+  width: 80%;
+  margin: auto;
+  
+  overflow: hidden;
+}
 
 #playableArea {
   position:relative;
-  margin-left: auto;
-  margin-right: auto;
-  width:80%;
-  height:400px;
+  margin: auto;
+  height: 99%;
+  width:101.5%;
+
+  /*
+  overflow-x: hidden;
+  overflow-y: scroll;
+  */
+  overflow-x: hidden;
+  overflow-y: auto;
+
 
   border: 1px solid;
-  overflow:hidden;
-  
   /*background-image: url(road.png);*/
   
   /*z-index:0;*/
-}
-
-.car {
-  width:100px;
-  height:70px;
-  position:absolute;
-
-  background-color: blue;
-  
-  background: url(rumbler.png);
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-}
-
-#car1 {
-  top:100px;
-}
-
-#car2 {
-  top:200px;
-}
-
-#car3 {
-  top:300px;
 }
 
 #player {
@@ -47,4 +47,18 @@
   height:40px;
 
   background:green;
+}
+
+.car {
+  width:100px;
+  height:70px;
+  position:absolute;
+
+  border-radius: 10px;
+
+  background-color: blue;
+  
+  background: url(rumbler.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }

@@ -8,10 +8,12 @@
 // jQuery call, fires when document ready
 jQuery(document).ready(function () {
 
+    var cars = ['icecreamvan', 'taxi', 'rumbler'];
+
     // add cars to the area
-    addCar();
-    addCar();
-    addCar();
+    for (i = 0; i < 5; i++) {
+        addCar();
+    }
 
     // fires off the function that moves all cars
     runCars();
@@ -33,6 +35,8 @@ jQuery(document).ready(function () {
             $(newCar).css({ 'left': '-' + $('.car').width() + 'px' });
             $(newCar).css({ 'transform': 'rotate(180deg)' });
         }
+
+        $(newCar).css('top', $('.car').length * 110 + 'px');
     }
 
     // fires off the mechanism to move all cars
@@ -100,19 +104,19 @@ jQuery(document).ready(function () {
 
         if (evt.keyCode == 37) {
             var currentPos = playerDiv.offsetLeft;
-            $('#player').css('left', (parseInt(currentPos) - 10) + 'px');
+            $('#player').css('left', (parseInt(currentPos) - 15) + 'px');
         }
         else if (evt.keyCode == 38) {
             var currentPos = playerDiv.offsetTop;
-            $('#player').css('top', (parseInt(currentPos) - 10) + 'px');
+            $('#player').css('top', (parseInt(currentPos) - 15) + 'px');
         }
         else if (evt.keyCode == 39) {
             var currentPos = playerDiv.offsetLeft;
-            $('#player').css('left', (parseInt(currentPos) + 10) + 'px');
+            $('#player').css('left', (parseInt(currentPos) + 15) + 'px');
         }
         else if (evt.keyCode == 40) {
             var currentPos = playerDiv.offsetTop;
-            $('#player').css('top', (parseInt(currentPos) + 10) + 'px');
+            $('#player').css('top', (parseInt(currentPos) + 15) + 'px');
         }
     }
 
