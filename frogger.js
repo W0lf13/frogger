@@ -37,7 +37,7 @@ jQuery(document).ready(function () {
         }
 
         $(newCar).css('top', $('.car').length * 110 + 'px');
-        var ranCar = Math.floor(Math.random) 1) + 3;
+        var ranCar = Math.floor(Math.random() + 1) + 3;
         alert (ranCar);
     }
 
