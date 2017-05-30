@@ -37,6 +37,8 @@ jQuery(document).ready(function () {
         }
 
         $(newCar).css('top', $('.car').length * 110 + 'px');
+        var ranCar = Math.floor(Math.random) 1) + 3;
+        alert (ranCar);
     }
 
     // fires off the mechanism to move all cars
