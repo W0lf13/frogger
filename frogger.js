@@ -3,6 +3,12 @@
  * Author: Wolf
  * Date: 2017/05/12
  * Defintion: All js logic for the game
+ * TODO:
+    - scroll as player moves
+    - randomly select a vehicle image
+    - auto calc y position of cars
+    - player movement sprites
+    - input for mobile
  */
 
 // jQuery call, fires when document ready
